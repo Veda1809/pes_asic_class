@@ -260,4 +260,4 @@ ret
 
 **Execution:** To execute the object file run the command `spike pk custom1to9.o`
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/ddb45c8c-11cc-4d49-b31d-c922698e6301)
+
