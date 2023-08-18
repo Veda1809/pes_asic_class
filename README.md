@@ -90,7 +90,7 @@ We wrote a C program for calculating the sum from 1 to n using a text editor, le
 #include<stdio.h>
 
 int main(){
-	int i, sum=0, n=26;
+	int i, sum=0, n=111;
 	for (i=1;i<=n; ++i) {
 	sum +=i;
 	}
@@ -104,6 +104,7 @@ Using the gcc compiler, we compiled the program to get the output.
 
 `gcc sumton.c`
 `.\a.out`
+
 <img width="545" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/0b7e7911-d0b2-4a6a-aefd-cd9b4d520a4f">
 
 ## RISCV GCC Compiler and Dissemble
