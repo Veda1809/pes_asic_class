@@ -276,16 +276,17 @@ The choice of the number of registers in a processor's architecture, such as the
 #### ABI Names
 ABI names for registers serve as a standardized way to designate the purpose and usage of specific registers within a software ecosystem. These names play a critical role in maintaining compatibility, optimizing code generation, and facilitating communication between different software components. 
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/b735fc44-0c08-40e8-8303-c338647dbd9f)
+<img width="430" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3b7aed64-37cd-492f-b9b5-cd840103566a">
+
 # Labwork using ABI Function Calls
 ## Algorithm for C Program using ASM
 - Incorporating assembly language code into a C program can be done using inline assembly or by linking separate assembly files with your C code.
 - When you call an assembly function from your C code, the C calling convention is followed, including pushing arguments onto the stack or passing them in registers as required.
 - The program executes the assembly function, following the assembly instructions you've provided.
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/1d76b7ef-cac9-4331-9190-31af36525e0c)
+
 ## Review ASM Function Calls
-- You write your C code in one file and your assembly code in a separate file.
-- In the assembly file, you declare assembly functions with appropriate signatures that match the calling conventions of your platform.
+- We wrote C code in one file and your assembly code in a separate file.
+- In the assembly file, we declared assembly functions with appropriate signatures that match the calling conventions of your platform.
 
 **C Program**
 `custom1to9.c`
