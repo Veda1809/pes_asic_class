@@ -1,4 +1,5 @@
 # VLSI Physical Design for ASICs
+## Objective
 The objective of VLSI (Very Large Scale Integration) physical design for ASICs (Application-Specific Integrated Circuits) is to transform a digital circuit's logical representation into a physical layout that meets various performance, power, area, and manufacturability requirements.
 # SKILL OUTCOMES
 + Architectural Design
@@ -8,36 +9,43 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 + clock Tree Synthesis
 + Routing
 
+# INSTALLATION
+https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
++ Download the run.sh
++ Open terminal
++ cd Downloads
++ ./run.sh
+  
 # TABLE OF CONTENTS
 ## DAY 1 
 **Introduction to RISCV ISA and GNU Compiler Toolchain**
 + Introduction to Basic Keywords
   - [Introduction](#introduction)
   - [From Apps to Hardware](#from-apps-to-hardware)
-  - Detail Description of Course Content
+  - [Detail Description of Course Content](#detail-description-of-course-content)
 
 + Labwork for RISCV Toolchain
-  - C Program
-  - RISCV GCC Compiler and Dissemble
-  - Spike Simulation and Debug
+  - [C Program](#c-program)
+  - [RISCV GCC Compiler and Dissemble](#riscv-gcc-compiler-and-dissemble)
+  - [Spike Simulation and Debug](#spike-simulation-and-debug)
 
 + Integer Number Representation  
-  - 64-bit Unsigned Numbers
-  - 64-bit Signed Numbers
-  - Labwork For Signed and Unsigned Numbers
+  - [64-bit Unsigned Numbers](#64-bit-unsigned-numbers)
+  - [64-bit Signed Numbers](#64-bit-signed-numbers)
+  - [Labwork For Signed and Unsigned Numbers](#labwork-for-signed-and-unsigned-numbers)
 
 ## DAY 2 
 **Introduction to ABI and Basic Verification Flow**
 + Application Binary Interface
-  - Introduction to ABI
-  - Memmory Allocation for Double Words
-  - Load, Add and Store Instructions
-  - 32-Registers and their ABI Names
+  - [Introduction to ABI](#introduction-to-abi)
+  - [Memory Allocation for Double Words](#memory-allocation-for-double-words)
+  - [Load, Add and Store Instructions](#load,-add-and-store-instructions)
+  - [32-Registers and their ABI Names](#32-registers-and-their-abi-names)
 
 + Labwork using ABI Function Calls
-  - Algorithm for C Program using ASM
-  - Review ASM Function Calls
-  - Simulate C Program using Function Call
+  - [Algorithm for C Program using ASM](#algorithm-for-c-program-using-asm)
+  - [Review ASM Function Calls](#review-asm-function-calls)
+  - [Simulate C Program using Function Call](#simulate-c-program-using-function-call)
 # Introduction to Basic Keywords
 ## Introduction
 - **ISA (Instruction Set Archhitecture)**
@@ -109,20 +117,47 @@ Using the gcc compiler, we compiled the program to get the output.
 
 ## RISCV GCC Compiler and Dissemble
 
-Using the riscv gcc compiler `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c`, we compiled the C program.
+Using the riscv gcc compiler, we compiled the C program.
+
+`riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c`
 
 Using `ls -ltr sum1ton.c`, we can check that the object file is created.
 
-To get the assembly code for the C program, `riscv64-unknown-elf-objdump -d sum1ton.o | less` .
+To get the dissembled ALP code for the C program, 
 
-In order to view the main section, type `/main`.
+`riscv64-unknown-elf-objdump -d sum1ton.o | less` .
+
+In order to view the main section, type 
+`/main`.
 
 Here, since we used -O1 optimisation, the number of instructions are 15.
 
 <img width="453" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/98843b92-0beb-4bfc-ba4b-1dac5c93ed3c">
 
 When we use -Ofast optimisation, we can see that the number of instructions have been reduced to 12.
+
 <img width="422" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3eb7afcd-0645-4340-bcac-ae2dc3258ce3">
+
+- -Onumber : level of optimisation required
+- -mabi : specifies the ABI (Application Binary Interface) to be used during code generation according to the requirements
+- -march : specifies target architecture
+
+In order to view the different options available for these fields, use the following commands
+
+go to the directory where riscv64-unkonwn-elf is present
+
+- -O1 : ``` riscv64-unkonwn-elf --help=optimizer```
+- -mabi : ```riscv64-unknown-elf-gcc --target-help```
+- -march : ```riscv64-unknown-elf-gcc --target-help```
+
+For different instances,
+- use the command ```riscv64-unknown-elf-objdump -d 1_to_N.o | less```
+- use ``` /instance``` to search for an instance 
+- press ENTER
+- press ```n``` to search next occurance
+- press ```N``` to search for previous occurance. 
+- use ```esc :q``` to quit
+
 
 ## Spike Simulation and Debug
 
@@ -130,31 +165,61 @@ When we use -Ofast optimisation, we can see that the number of instructions have
 
 <img width="523" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/2fa7d825-102f-41ed-b9e6-a31c2417cb22">
 
+
 `spike -d pk sum1ton.c` is used for debugging.
 
 The contents of the registers can also be viewed.
 
 <img width="317" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/be6fcaa9-ab93-46e0-8da3-7b8056d09f0c">
 
+- press ENTER : to show the first line and successive ENTER to show successive lines
+- reg 0 a2 : to check content of register a2 0th core
+- q : to quit the debug process
+
 # Integer Number Representation 
 
 ## Unsigned Numbers
 - Unsigned numbers, also known as non-negative numbers, are numerical values that represent magnitudes without indicating direction or sign.
-- Range: 0 to 2^(N-1) - 1.
+- Range: [0, (2^n)-1 ]
 
 ## Signed Numbers
 - Signed numbers are numerical values that can represent both positive and negative magnitudes, along with zero.
-- Range : -(2^(N-1)) to 2^(N-1) - 1.
+- Range : Positive : [0 , 2^(n-1)-1]
+          Negative : [-1 to 2^(n-1)]
  
 ## Labwork
 
+We wrote a C program that shows the maximum and minimum values of 64bit unsigned numbers.
+
+``` c
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+	unsigned long long int max = (unsigned long long int) (pow(2,64) -1);
+	unsigned long long int min = (unsigned long long int) (pow(2,64) *(-1));
+	printf("lowest number represented by unsigned 64-bit integer is %llu\n",min);
+	printf("highest number represented by unsigned 64-bit integer is %llu\n",max);
+	return 0;
+}
+```
+<img width="531" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/1195a00a-9b42-4a33-bce0-6095e5350647">
 
 
+We wrote a C program that shows the maximum and minimum values of 64bit signed numbers.
+``` c
+#include <stdio.h>
+#include <math.h>
 
-
-
-
-
+int main(){
+	long long int max = (long long int) (pow(2,63) -1);
+	long long int min = (long long int) (pow(2,63) *(-1));
+	printf("lowest number represented by signed 64-bit integer is %lld\n",min);
+	printf("highest number represented by signed 64-bit integer is %lld\n",max);
+	return 0;
+}
+```
+<img width="481" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/48c4c465-8324-4765-98fe-20584143f33f">
 
 
 # Application Binary Interface
@@ -170,11 +235,13 @@ In big-endian representation, you store the most significant byte (MSB) at the l
 #### For example, consider the 64-bit hexadecimal value 0x0123456789ABCDEF. 
 In Little-Endian representation, it would be stored as follows in memory:
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/307fabf6-7f58-4337-8171-6d62d99a4386)
+<img width="453" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/8c63e751-8882-4b1e-a2f8-84da628ee604">
+
 
 In Big-Endian representation, it would be stored as follows in memory:
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/aa53e082-5878-4e3f-948a-f6f080ed0ed2)
+<img width="454" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3954540e-800f-4503-97ef-6c77daacd058">
+
 ## Load, Add and Store Instructions
 Load, Add, and Store instructions are fundamental operations in computer architecture and assembly programming. They are often used to manipulate data within a computer's memory and registers.
 1. **Load Instructions:**
@@ -257,8 +324,15 @@ add a0, a4, zero
 ret
 ```
 ## Simulate C Program using Function Call
-**Compilation:** To compile C code and Asseembly file use the command `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o custom1to9.o custom1to9.c load.s` this would generate object file `custom1to9.o`.
+**Compilation:** To compile C code and Asseembly file use the command
 
-**Execution:** To execute the object file run the command `spike pk custom1to9.o`
+`riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o custom1to9.o custom1to9.c load.s` 
 
+this would generate object file `custom1to9.o`.
+
+**Execution:** To execute the object file run the command 
+
+`spike pk custom1to9.o`
+
+<img width="517" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/46d311ec-4bf9-4ad8-b758-b39eef1dbc7c">
 
