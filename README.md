@@ -338,3 +338,20 @@ this would generate object file `custom1to9.o`.
 
 <img width="517" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/46d311ec-4bf9-4ad8-b758-b39eef1dbc7c">
 
+## Lab to Run C-Program on RISCV-CPU
+
+`git clone https://github.com/kunalg123/riscv_workshop_collaterals.git`
+
+`cd riscv_workshop_collaterals`
+
+`ls -ltr`
+
+`cd labs`
+
+`ls -ltr`
+
+`chmod 777 rv32im.sh`
+
+`./rv32im.sh`
+
+<img width="517" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/16c15f04-b5c9-441f-9b87-f9e35b19dc6f">
