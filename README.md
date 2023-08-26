@@ -66,11 +66,8 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   - [Review ASM Function Calls](#review-asm-function-calls)
   - [Simulate C Program using Function Call](#simulate-c-program-using-function-call)
   - [Lab to Run C-Program On RISCV-CPU](#lab-to-run-c-program-on-riscv-cpu)
-
-<details>
-<summary>DAY 1: Introduction to RISCV ISA and GNU Compiler Toolchain</summary>
-<br>    
-# Introduction to Basic Keywords
+   
+# Introdction to Basic Keywords
 ## Introduction
 - **ISA (Instruction Set Archhitecture)**
   - ISA defines the interface between a computer's hardware and its software, specifically how the processor and its components interact with the software instructions that drive the execution of tasks.
