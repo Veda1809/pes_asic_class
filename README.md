@@ -65,8 +65,6 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   - [Algorithm for C Program using ASM](#algorithm-for-c-program-using-asm)
   - [Review ASM Function Calls](#review-asm-function-calls)
   - [Simulate C Program using Function Call](#simulate-c-program-using-function-call)
-
-+ Basic Verification Flow using iverilog
   - [Lab to Run C-Program On RISCV-CPU](#lab-to-run-c-program-on-riscv-cpu)
 
     
