@@ -40,6 +40,8 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
    ### End of installation
 
 ## Yosys with GTKwave Installation
+https://github.com/Veda1809/pes_asic_class/blob/main/yosys.sh
+
 + Download the yosys.sh
 + Open terminal
 + `cd Downloads`
