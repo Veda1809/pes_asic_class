@@ -509,6 +509,7 @@ this would generate object file `custom1to9.o`.
   -  Both the design and the testbench are fed to the simulator and it produces a vcd (value change dump) file.
   -  In order to view the vcd file, we use the GTKwave where we can see the wave forms.
     
+    
     <img width="567" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/37b643b5-e41e-425d-85f0-a55d7e190571">
 
 - **Design**
