@@ -204,8 +204,9 @@ int main(){
 
 ## Signed Numbers
 - Signed numbers are numerical values that can represent both positive and negative magnitudes, along with zero.
-- Range : Positive : [0 , 2^(n-1)-1]
-          Negative : [-1 to 2^(n-1)]
+- Range :
+   - Positive : [0 , 2^(n-1)-1]
+   - Negative : [-1 to 2^(n-1)]
  
 ## Labwork
 
