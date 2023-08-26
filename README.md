@@ -11,7 +11,9 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 + Routing
 
 # INSTALLATION
-## Riscv_toolchain Installation	
+<details>
+<summary> Riscv_toolchain Installation </summary>
+
 https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 
 + Download the run.sh
@@ -38,8 +40,11 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
            `export PATH=~/riscv_toolchain/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin:$PATH `
 
    ### End of installation
+</details>
 
-## Yosys with GTKwave Installation
+<details>
+<summary> Yosys with GTKwave Installation </summary>
+	
 + `cd`
 + `git clone https://github.com/YosysHQ/yosys.git`
 + `cd yosys`
@@ -57,24 +62,25 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   If received as shown above, installation is successful.
 
     ### End of installation
-  
+</details>
+
 # TABLE OF CONTENTS
 ## DAY 1 
 **Introduction to RISCV ISA and GNU Compiler Toolchain**
-+ Introduction to Basic Keywords
-  - [Introduction](#introduction)
-  - [From Apps to Hardware](#from-apps-to-hardware)
-  - [Detail Description of Course Content](#detail-description-of-course-content)
++ [Introduction to Basic Keywords](#introduction-to-basic-keywords)
+  - Introduction
+  - From Apps to Hardware
+  - Detail Description of Course Content
 
-+ Labwork for RISCV Toolchain
-  - [C Program](#c-program)
-  - [RISCV GCC Compiler and Dissemble](#riscv-gcc-compiler-and-dissemble)
-  - [Spike Simulation and Debug](#spike-simulation-and-debug)
++ [Labwork for RISCV Toolchain](#labwork-for-riscv-toolchain)
+  - C Program
+  - RISCV GCC Compiler and Dissemble
+  - Spike Simulation and Debug
 
-+ Integer Number Representation  
-  - [64-bit Unsigned Numbers](#64-bit-unsigned-numbers)
-  - [64-bit Signed Numbers](#64-bit-signed-numbers)
-  - [Labwork For Signed and Unsigned Numbers](#labwork-for-signed-and-unsigned-numbers)
++ [Integer Number Representation](#integer-number-representation) 
+  - 64-bit Unsigned Numbers
+  - 64-bit Signed Numbers
+  - Labwork For Signed and Unsigned Numbers
 
 ## DAY 2 
 **Introduction to ABI and Basic Verification Flow**
@@ -91,7 +97,9 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   - [Lab to Run C-Program On RISCV-CPU](#lab-to-run-c-program-on-riscv-cpu)
    
 # Introdction to Basic Keywords
-## Introduction
+<details>
+<summary> Introduction </summary>
+	
 - **ISA (Instruction Set Archhitecture)**
   - ISA defines the interface between a computer's hardware and its software, specifically how the processor and its components interact with the software instructions that drive the execution of tasks.
   - It encompasses a set of instructions, addressing modes, data types, registers, memory organization, and the mechanisms for executing and managing instructions.
@@ -102,7 +110,11 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 
 <img width="536" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/4eabe0b7-4581-419b-88e7-84c7ac1dac8e">
 
-## From Apps to Hardware
+</details>
+
+<details>
+<summary> From Apps to Hardware </summary>
+
 1. **Apps:** Application software, often referred to simply as "applications" or "apps," is a type of computer software that is designed to perform specific tasks or functions for end-users.
 2. **System software:** System software refers to a category of computer software that acts as an intermediary between the hardware components of a computer system and the user-facing application software. It provides essential services, manages hardware resources, and enables the execution of application programs. System software plays a critical role in maintaining the overall functionality, security, and performance of a computer system.'
 3. **Operating System:** The operating system is a fundamental piece of software that manages hardware resources and provides various services for both users and application programs. It controls tasks such as memory management, process scheduling, file system management, and user interface interaction. Examples of operating systems include Microsoft Windows, macOS, Linux, and Android.
@@ -115,7 +127,11 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 
  7. **Hardware:** Hardware refers to the physical components of a computer system or any electronic device. It encompasses all the tangible parts that make up a computing or electronic device and enable it to perform various tasks.
 
-## Detail Description of Course Content
+</details>
+
+<details>
+<summary> Detail Description of Course Content </summary>
+
 **Pseudo Instructions:** Pseudo-instructions are used to simplify programming, improve code readability, and reduce the number of explicit instructions a programmer needs to write. They are especially useful for common programming patterns that involve multiple instructions.
 `Ex: li, mv`.
 
@@ -133,8 +149,13 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 - Memory allocation refers to the process of assigning and managing memory segments for various data structures, variables, and objects used by a program. It involves allocating memory space from the system's memory pool and releasing it when it is no longer needed to prevent memory leaks.
 - The stack pointer is a register used by a program to keep track of the current position of the program's execution on the call stack. 
 
+</details>
+
 # Labwork for RISCV Toolchain
-## C Program
+
+<details>
+<summary> C Program </summary>
+
 + We wrote a C program for calculating the sum from 1 to n using a text editor, leafpad.
 
 `leafpad sumton.c`
@@ -159,7 +180,10 @@ int main(){
 
 <img width="545" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/0b7e7911-d0b2-4a6a-aefd-cd9b4d520a4f">
 
-## RISCV GCC Compiler and Dissemble
+</details>
+
+<details>
+<summary> RISCV GCC Compiler and Dissemble </summary>
 
 + Using the riscv gcc compiler, we compiled the C program.
 
@@ -200,8 +224,10 @@ int main(){
 + To quit:
   - use ```esc :q``` to quit
 
+</details>
 
-## Spike Simulation and Debug
+<details>
+<summary> Spike Simulation and Debug </summary>
 
 + `spike pk sum1ton.o` is used to check whether the instructions produced are right to give the correct output.
 
@@ -218,19 +244,30 @@ int main(){
    - reg 0 a2 : to check content of register a2 0th core
    - q : to quit the debug process
 
+</details>
+
 # Integer Number Representation 
 
-## Unsigned Numbers
+<details>
+<summary> Unsigned Numbers </summary>
+
 - Unsigned numbers, also known as non-negative numbers, are numerical values that represent magnitudes without indicating direction or sign.
 - Range: [0, (2^n)-1 ]
 
-## Signed Numbers
+</details>
+
+<details>
+<summary> Signed Numbers </summary>
+
 - Signed numbers are numerical values that can represent both positive and negative magnitudes, along with zero.
 - Range :
    - Positive : [0 , 2^(n-1)-1]
    - Negative : [-1 to 2^(n-1)]
- 
-## Labwork
+
+</details>
+
+<details>
+<summary> Labwork </summary>
 
 + We wrote a C program that shows the maximum and minimum values of 64bit unsigned numbers.
 
@@ -264,6 +301,7 @@ int main(){
 ```
 <img width="481" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/48c4c465-8324-4765-98fe-20584143f33f">
 
+</details>
 
 # Application Binary Interface
 ## Introduction to ABI
