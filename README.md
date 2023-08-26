@@ -95,8 +95,9 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   - Review ASM Function Calls
   - Simulate C Program using Function Call
   - Lab to Run C-Program On RISCV-CPU
-   
-# Introduction to Basic Keywords
+
+# Day-1   
+## Introduction to Basic Keywords
 <details>
 <summary> Introduction </summary>
 	
@@ -151,7 +152,7 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 
 </details>
 
-# Labwork for RISCV Toolchain
+## Labwork for RISCV Toolchain
 
 <details>
 <summary> C Program </summary>
@@ -246,7 +247,7 @@ int main(){
 
 </details>
 
-# Integer Number Representation 
+## Integer Number Representation 
 
 <details>
 <summary> Unsigned Numbers </summary>
@@ -303,14 +304,20 @@ int main(){
 
 </details>
 
-# Application Binary Interface
+# Day-2
+## Application Binary Interface
 
 <details>
 <summary> Introduction to ABI </summary>
 
 + An Application Binary Interface (ABI) is a set of rules and conventions that dictate how binary code interacts with and communicates with other binary code, typically at the level of machine code or compiled code. In simpler terms, it defines the interface between two software components or systems that are written in different programming languages, compiled by different compilers, or running on different hardware architectures.
 + The ABI is crucial for enabling interoperability between different software components, such as different libraries, object files, or even entire programs. It allows components compiled independently and potentially on different platforms to work seamlessly together by adhering to a common set of rules for communication and data representation.
-## Memory Allocation for Double Words
+
+</details>
+
+<details>
+<summary> Memory Allocation for Double Words </summary>
+
 64-bit number (or any multi-byte value) can be loaded into memory in little-endian or big-endian. It involves understanding the byte order and arranging the bytes accordingly
 1. **Little-Endian:**
 In little-endian representation, you store the least significant byte (LSB) at the lowest memory address and the most significant byte (MSB) at the highest memory address.
@@ -373,7 +380,7 @@ ABI names for registers serve as a standardized way to designate the purpose and
 
 </details>
 
-# Labwork using ABI Function Calls
+## Labwork using ABI Function Calls
 
 <details>
 <summary> Algorithm for C Program using ASM </summary>
