@@ -11,9 +11,7 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 + Routing
 
 # INSTALLATION
-<details>
-<summary> riscv_toolchain installation </summary>
-	
+## Riscv_toolchain Installation	
 https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 
 + Download the run.sh
@@ -38,8 +36,16 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
      -  insert this in the bash file if not present:
        
            `export PATH=~/riscv_toolchain/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin:$PATH `
-        
- </details> 
+
+   ### End of installation
+
+## Yosys with GTKwave Installation
++ Download the yosys.sh
++ Open terminal
++ `cd Downloads`
++ ` ./yosys.sh`
+
+    ### End of installation
   
 # TABLE OF CONTENTS
 ## DAY 1 
