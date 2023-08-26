@@ -522,3 +522,106 @@ this would generate object file `custom1to9.o`.
     <img width="526" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/72e6ffe4-abba-41f1-b79f-240f125b410b">
 
 </details>
+
+## Labs using iVerilog and GTKwave
+
+<details>
+<summary> Introduction to Lab </summary>
+
++ Make a directory named vsd `mkdir vsd`.
++ `cd vsd`.
++ `git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git`
++ Creates a folder called `sky130RTLDesignAndSynthesisWorkshop` in the `vsd` directory.
+
+ <img width="377" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/0a28a7e8-7567-4d5a-8734-5da2e9533a28">
+
+  - my_lib : contains all the library files
+
+  - lib : contains sky130 standard cell library used for our synthesis
+
+  - verilog_model : contains all the standard cell verilog modules of the standard cells contained in the .lib
+
+  - verilog_files : contains all the verilog source files and testbench files which are required for labs
+
+</details>
+
+<details>
+<summary> iVerilog GTKwave Part-1 </summary>	
+
+
++ `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
+
++ we have loaded the source code along with the testbench code into the iverilog simulator
+
++ `iverilog good_mux.v tb_good_mux.v`
+
++ We can see that an output file `a.out` has been created.
+
++ `./a.out`
+
++ The output of the iverilog, a vcd file,  is created which is loaded into the simualtor gtkwave.
+
++ ` gtkwave tb_good_mux.vcd `
+
+<img width="767" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/14bdf7a7-7a4b-4a1f-9875-96575f59239e">
+
+
+<img width="497" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/e7627aaf-6048-445a-aaae-1117212d9670">
+
+</details>
+
+<details>
+<summary> iVerilog GTKwave Part-2 </summary>
+
++ In order to view the contents in the files,
+
++ `gvim tb_good_mux.v -o good_mux.v`
+
+**good_mux.v**
+
+```
+module good_mux (input i0 , input i1 , input sel , output reg y);
+always @ (*)
+begin
+	if(sel)
+		y <= i1;
+	else 
+		y <= i0;
+end
+endmodule
+```
+**tb_good_mux.v**
+
+```
+timescale 1ns / 1ps
+module tb_good_mux;
+	// Inputs
+	reg i0,i1,sel;
+	// Outputs
+	wire y;
+
+        // Instantiate the Unit Under Test (UUT)
+	good_mux uut (
+		.sel(sel),
+		.i0(i0),
+		.i1(i1),
+		.y(y)
+	);
+
+	initial begin
+	$dumpfile("tb_good_mux.vcd");
+	$dumpvars(0,tb_good_mux);
+	// Initialize Inputs
+	sel = 0;
+	i0 = 0;
+	i1 = 0;
+	#300 $finish;
+	end
+
+always #75 sel = ~sel;
+always #10 i0 = ~i0;
+always #55 i1 = ~i1;
+endmodule
+```
+
+</details>
