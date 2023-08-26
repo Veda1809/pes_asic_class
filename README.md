@@ -113,7 +113,7 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 
 # Labwork for RISCV Toolchain
 ## C Program
-We wrote a C program for calculating the sum from 1 to n using a text editor, leafpad.
++ We wrote a C program for calculating the sum from 1 to n using a text editor, leafpad.
 
 `leafpad sumton.c`
 ``` c
@@ -130,7 +130,7 @@ int main(){
 ```
 <img width="345" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/2d5e3fe1-f8fd-434b-8faf-2912d3c056e1">
 
-Using the gcc compiler, we compiled the program to get the output.
++ Using the gcc compiler, we compiled the program to get the output.
 
 `gcc sumton.c`
 `.\a.out`
@@ -139,64 +139,62 @@ Using the gcc compiler, we compiled the program to get the output.
 
 ## RISCV GCC Compiler and Dissemble
 
-Using the riscv gcc compiler, we compiled the C program.
++ Using the riscv gcc compiler, we compiled the C program.
 
 `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c`
 
-Using `ls -ltr sum1ton.c`, we can check that the object file is created.
++ Using `ls -ltr sum1ton.c`, we can check that the object file is created.
 
-To get the dissembled ALP code for the C program, 
++ To get the dissembled ALP code for the C program, 
 
 `riscv64-unknown-elf-objdump -d sum1ton.o | less` .
 
-In order to view the main section, type 
-`/main`.
++ In order to view the main section, type 
+   - `/main`
+   - press ENTER
+   - press `n` to search next occurance
+   -  press `N` to search for previous occurance
 
-Here, since we used -O1 optimisation, the number of instructions are 15.
++ Here, since we used -O1 optimisation, the number of instructions are 15.
 
 <img width="453" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/98843b92-0beb-4bfc-ba4b-1dac5c93ed3c">
 
-When we use -Ofast optimisation, we can see that the number of instructions have been reduced to 12.
++ When we use -Ofast optimisation, we can see that the number of instructions have been reduced to 12.
 
 <img width="422" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3eb7afcd-0645-4340-bcac-ae2dc3258ce3">
 
-- -Onumber : level of optimisation required
-- -mabi : specifies the ABI (Application Binary Interface) to be used during code generation according to the requirements
-- -march : specifies target architecture
+   - -Onumber : level of optimisation required
+   - -mabi : specifies the ABI (Application Binary Interface) to be used during code generation according to the requirements
+   - -march : specifies target architecture
 
-In order to view the different options available for these fields, use the following commands
++ In order to view the different options available for these fields, use the following commands
 
-go to the directory where riscv64-unkonwn-elf is present
+ go to the directory where riscv64-unkonwn-elf is present
 
-- -O1 : ``` riscv64-unkonwn-elf --help=optimizer```
-- -mabi : ```riscv64-unknown-elf-gcc --target-help```
-- -march : ```riscv64-unknown-elf-gcc --target-help```
+  - -O1 : ``` riscv64-unkonwn-elf --help=optimizer```
+  - -mabi : ```riscv64-unknown-elf-gcc --target-help```
+  - -march : ```riscv64-unknown-elf-gcc --target-help```
 
-For different instances,
-- use the command ```riscv64-unknown-elf-objdump -d 1_to_N.o | less```
-- use ``` /instance``` to search for an instance 
-- press ENTER
-- press ```n``` to search next occurance
-- press ```N``` to search for previous occurance. 
-- use ```esc :q``` to quit
++ To quit:
+  - use ```esc :q``` to quit
 
 
 ## Spike Simulation and Debug
 
-`spike pk sum1ton.o` is used to check whether the instructions produced are right to give the correct output.
++ `spike pk sum1ton.o` is used to check whether the instructions produced are right to give the correct output.
 
 <img width="523" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/2fa7d825-102f-41ed-b9e6-a31c2417cb22">
 
 
-`spike -d pk sum1ton.c` is used for debugging.
++ `spike -d pk sum1ton.c` is used for debugging.
 
-The contents of the registers can also be viewed.
++ The contents of the registers can also be viewed.
 
 <img width="317" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/be6fcaa9-ab93-46e0-8da3-7b8056d09f0c">
 
-- press ENTER : to show the first line and successive ENTER to show successive lines
-- reg 0 a2 : to check content of register a2 0th core
-- q : to quit the debug process
+   - press ENTER : to show the first line and successive ENTER to show successive lines
+   - reg 0 a2 : to check content of register a2 0th core
+   - q : to quit the debug process
 
 # Integer Number Representation 
 
@@ -211,7 +209,7 @@ The contents of the registers can also be viewed.
  
 ## Labwork
 
-We wrote a C program that shows the maximum and minimum values of 64bit unsigned numbers.
++ We wrote a C program that shows the maximum and minimum values of 64bit unsigned numbers.
 
 ``` c
 #include <stdio.h>
@@ -228,7 +226,7 @@ int main(){
 <img width="531" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/1195a00a-9b42-4a33-bce0-6095e5350647">
 
 
-We wrote a C program that shows the maximum and minimum values of 64bit signed numbers.
++ We wrote a C program that shows the maximum and minimum values of 64bit signed numbers.
 ``` c
 #include <stdio.h>
 #include <math.h>
@@ -348,13 +346,13 @@ add a0, a4, zero
 ret
 ```
 ## Simulate C Program using Function Call
-**Compilation:** To compile C code and Asseembly file use the command
++ **Compilation:** To compile C code and Asseembly file use the command
 
 `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o custom1to9.o custom1to9.c load.s` 
 
 this would generate object file `custom1to9.o`.
 
-**Execution:** To execute the object file run the command 
++ **Execution:** To execute the object file run the command 
 
 `spike pk custom1to9.o`
 
@@ -362,18 +360,18 @@ this would generate object file `custom1to9.o`.
 
 ## Lab to Run C-Program on RISCV-CPU
 
-`git clone https://github.com/kunalg123/riscv_workshop_collaterals.git`
++ `git clone https://github.com/kunalg123/riscv_workshop_collaterals.git`
 
-`cd riscv_workshop_collaterals`
++ `cd riscv_workshop_collaterals`
 
-`ls -ltr`
++ `ls -ltr`
 
-`cd labs`
++ `cd labs`
 
-`ls -ltr`
++ `ls -ltr`
 
-`chmod 777 rv32im.sh`
++ `chmod 777 rv32im.sh`
 
-`./rv32im.sh`
++ `./rv32im.sh`
 
 <img width="517" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/16c15f04-b5c9-441f-9b87-f9e35b19dc6f">
