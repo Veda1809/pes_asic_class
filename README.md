@@ -84,19 +84,19 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 
 ## DAY 2 
 **Introduction to ABI and Basic Verification Flow**
-+ Application Binary Interface
-  - [Introduction to ABI](#introduction-to-abi)
-  - [Memory Allocation for Double Words](#memory-allocation-for-double-words)
-  - [Load, Add and Store Instructions](#load,-add-and-store-instructions)
-  - [32-Registers and their ABI Names](#32-registers-and-their-abi-names)
++ [Application Binary Interface](#application-binary-interface)
+  - Introduction to ABI
+  - Memory Allocation for Double Words
+  - Load, Add and Store Instructions
+  - 32-Registers and their ABI Names
 
-+ Labwork using ABI Function Calls
-  - [Algorithm for C Program using ASM](#algorithm-for-c-program-using-asm)
-  - [Review ASM Function Calls](#review-asm-function-calls)
-  - [Simulate C Program using Function Call](#simulate-c-program-using-function-call)
-  - [Lab to Run C-Program On RISCV-CPU](#lab-to-run-c-program-on-riscv-cpu)
++ [Labwork using ABI Function Calls](#labwork-using-abi-function-calls)
+  - Algorithm for C Program using ASM
+  - Review ASM Function Calls
+  - Simulate C Program using Function Call
+  - Lab to Run C-Program On RISCV-CPU
    
-# Introdction to Basic Keywords
+# Introduction to Basic Keywords
 <details>
 <summary> Introduction </summary>
 	
@@ -304,7 +304,10 @@ int main(){
 </details>
 
 # Application Binary Interface
-## Introduction to ABI
+
+<details>
+<summary> Introduction to ABI </summary>
+
 + An Application Binary Interface (ABI) is a set of rules and conventions that dictate how binary code interacts with and communicates with other binary code, typically at the level of machine code or compiled code. In simpler terms, it defines the interface between two software components or systems that are written in different programming languages, compiled by different compilers, or running on different hardware architectures.
 + The ABI is crucial for enabling interoperability between different software components, such as different libraries, object files, or even entire programs. It allows components compiled independently and potentially on different platforms to work seamlessly together by adhering to a common set of rules for communication and data representation.
 ## Memory Allocation for Double Words
@@ -323,7 +326,11 @@ In Big-Endian representation, it would be stored as follows in memory:
 
 <img width="454" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3954540e-800f-4503-97ef-6c77daacd058">
 
-## Load, Add and Store Instructions
+</details>
+
+<details>
+<summary> Load, Add and Store instructions </summary>
+
 Load, Add, and Store instructions are fundamental operations in computer architecture and assembly programming. They are often used to manipulate data within a computer's memory and registers.
 1. **Load Instructions:**
 Load instructions are used to transfer data from memory to registers. They allow you to fetch data from a specified memory address and place it into a register for further processing.
@@ -352,21 +359,35 @@ In this Example
 - `add` is the add instruction.
 - `x9` is the destination register.
 - `x10` and `x11` are the source registers.
-## 32-Registers and their ABI Names
+
+</details>
+
+<details>
+<summary> 32-Registers and their ABI Names </summary>
+
 The choice of the number of registers in a processor's architecture, such as the RISC-V RV64 architecture with its 32 general-purpose registers, involves a trade-off between various factors. While modern processors can have more registers but increasing the number of registers could lead to larger instructions, which would take up more memory and potentially slow down instruction fetch and decode.
 #### ABI Names
 ABI names for registers serve as a standardized way to designate the purpose and usage of specific registers within a software ecosystem. These names play a critical role in maintaining compatibility, optimizing code generation, and facilitating communication between different software components. 
 
 <img width="430" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3b7aed64-37cd-492f-b9b5-cd840103566a">
 
+</details>
+
 # Labwork using ABI Function Calls
-## Algorithm for C Program using ASM
+
+<details>
+<summary> Algorithm for C Program using ASM </summary>
+
 - Incorporating assembly language code into a C program can be done using inline assembly or by linking separate assembly files with your C code.
 - When you call an assembly function from your C code, the C calling convention is followed, including pushing arguments onto the stack or passing them in registers as required.
 - The program executes the assembly function, following the assembly instructions you've provided.
 <img width="477" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/6afb1381-2237-46b0-831a-984e73e1e289">
 
-## Review ASM Function Calls
+</details>
+
+<details>
+<summary> Review ASM Function Calls </summary>
+
 - We wrote C code in one file and your assembly code in a separate file.
 - In the assembly file, we declared assembly functions with appropriate signatures that match the calling conventions of your platform.
 
@@ -406,7 +427,12 @@ blt a3, a2, loop
 add a0, a4, zero
 ret
 ```
-## Simulate C Program using Function Call
+
+</details>
+
+<details>
+<summary> Simulate C Program using Function Call </summary>
+
 + **Compilation:** To compile C code and Asseembly file use the command
 
 `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o custom1to9.o custom1to9.c load.s` 
@@ -419,7 +445,11 @@ this would generate object file `custom1to9.o`.
 
 <img width="517" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/46d311ec-4bf9-4ad8-b758-b39eef1dbc7c">
 
-## Lab to Run C-Program on RISCV-CPU
+</details>
+
+<details>
+<summary> Lab to Run C-Program on RICV-CPU </summary>
+
 
 + `git clone https://github.com/kunalg123/riscv_workshop_collaterals.git`
 
@@ -436,3 +466,5 @@ this would generate object file `custom1to9.o`.
 + `./rv32im.sh`
 
 <img width="517" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/16c15f04-b5c9-441f-9b87-f9e35b19dc6f">
+
+</details>
