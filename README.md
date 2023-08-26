@@ -67,7 +67,9 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   - [Simulate C Program using Function Call](#simulate-c-program-using-function-call)
   - [Lab to Run C-Program On RISCV-CPU](#lab-to-run-c-program-on-riscv-cpu)
 
-    
+<details>
+<summary>DAY 1: Introduction to RISCV ISA and GNU Compiler Toolchain</summary>
+<br>    
 # Introduction to Basic Keywords
 ## Introduction
 - **ISA (Instruction Set Archhitecture)**
