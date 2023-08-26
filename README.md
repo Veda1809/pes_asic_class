@@ -54,7 +54,7 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   
   <img width="358" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/e2ef73dd-d9b5-4f6c-9db5-d1e89c7fa88a">
   
-  If received as shown as shown, installation is successful.
+  If received as shown above, installation is successful.
 
     ### End of installation
   
