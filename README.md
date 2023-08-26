@@ -96,6 +96,23 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   - Simulate C Program using Function Call
   - Lab to Run C-Program On RISCV-CPU
 
+## DAY 3
+**Introduction to Verilog RTL design and Synthesis**
++ [Introduction to Open-Source Simulator iVerilog](#introduction-to-open-source-simulator-iverilog)
+   - Introduction to iVerilog Design Testbench
++ [Labs using iVerilog and GTKwave](#labs-using-iverilog-and-gtkwave)
+   - Introduction to Lab
+   - iVerilog GTKwave Part-1
+   - iVerilog GTKwave Part-2
++ [Introduction to Yosys and Logic synthesis](#introduction-to-yosys-and-logic-synthesis)
+   - Introduction to Yosys
+   - Introduction to Logic Synthesis Part-1
+   - Introduction to Logic Synthesis Part-2
++ [Labs using Yosys and Sky130 PDKs](#labs-using-yosys-and-sky130-pdks)
+   - Yosys 1 good mux Part-1
+   - Yosys 1 good mux Part-2
+   - Yosys 1 good mux Part-3
+  
 # Day-1   
 ## Introduction to Basic Keywords
 <details>
@@ -474,4 +491,11 @@ this would generate object file `custom1to9.o`.
 
 <img width="517" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/16c15f04-b5c9-441f-9b87-f9e35b19dc6f">
 
+</details>
+
+# Day-3
+## Introduction to Open-Source Simulator iVerilog
+<details>
+<summary> Introduction to iVerilog Design Testbench </summary>
+	
 </details>
