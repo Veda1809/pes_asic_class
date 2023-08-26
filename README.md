@@ -14,8 +14,26 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 + Download the run.sh
 + Open terminal
-+ cd Downloads
-+ ./run.sh
++ `cd Downloads`
++ `./run.sh `
++ If permission denied, then
+   - `chmod +x run.sh`
+   - `./run.sh`
++ If error in configure,
+  
+  <img width="432" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/cab4ecd6-5228-43e6-9181-0a025e5bc655">
+  
+     - `cd`
+     - `cd riscv_toolchain/iverilog `
+     - `./configure `
+     - ` make`
+     - `sudo make install`
++ To check if riscv-gcc compiler is in the path,
+     - `gedit ~/.bashrc `
+     -  insert this in the bash file if not present:
+       
+           `export PATH=~/riscv_toolchain/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin:$PATH `
+  
   
 # TABLE OF CONTENTS
 ## DAY 1 
