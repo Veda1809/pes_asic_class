@@ -497,5 +497,28 @@ this would generate object file `custom1to9.o`.
 ## Introduction to Open-Source Simulator iVerilog
 <details>
 <summary> Introduction to iVerilog Design Testbench </summary>
-	
+
+ - **Simulator**
+   - It is a tool used for simulating the design. It looks for the changes on the input signals to evaluate the outputs.
+   - If there is no change in the inputs, the simulator doesn't evaluate the outputs.
+   - RTL is checked for adherence to the spec by simulating the design.
+   - The tool used here is **iverilog** .
+
+- **iVerilog**
+  -  It is an open-source Verilog simulator used for testing and simulating digital circuit designs described in the Verilog hardware description language (HDL).
+  -  Both the design and the testbench are fed to the simulator and it produces a vcd (value change dump) file.
+  -  In order to view the vcd file, we use the GTKwave where we can see the wave forms.
+    
+    <img width="567" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/37b643b5-e41e-425d-85f0-a55d7e190571">
+
+- **Design**
+  - It is the actual verilog code or set of verilog codes which ahs the intended functionality to meet with the required specifications.
+  - Verilog is used to describe the behavior and structure of digital circuits at different levels of abstraction, from high-level system descriptions down to low-level gate-level representations. 
+
+- **Testbench**
+  - A testbench is a specialized Verilog module or program used to verify the functionality and behavior of another Verilog module, circuit, or design. Testbenches are essential for testing and simulating digital designs before they are synthesized or manufactured as physical chips.
+  - It is a setup to apply stimulus to the design to check its functionality.
+
+    <img width="526" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/72e6ffe4-abba-41f1-b79f-240f125b410b">
+
 </details>
