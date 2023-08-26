@@ -579,7 +579,7 @@ this would generate object file `custom1to9.o`.
 
 **good_mux.v**
 
-```
+``` v
 module good_mux (input i0 , input i1 , input sel , output reg y);
 always @ (*)
 begin
@@ -592,7 +592,7 @@ endmodule
 ```
 **tb_good_mux.v**
 
-```
+``` v
 timescale 1ns / 1ps
 module tb_good_mux;
 	// Inputs
