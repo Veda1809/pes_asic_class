@@ -734,7 +734,7 @@ It gives a report of what cells are used and the number of input and output sign
    - `write_verilog good_mux_netlist.v`
    - `!gvim good_mux_netlist.v`
      
-   - To view a smaller code
+   - To view a simplified code
      
      ` write_verilog -noattr good_mux_netlist.v`
      
