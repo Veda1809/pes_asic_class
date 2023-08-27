@@ -975,11 +975,13 @@ It gives a report of what cells are used and the number of input and output sign
    - `iverilog dff_syncres.v tb_dff_syncres.v`
    - `./a.out`
    - `gtkwave tb_dff_syncres.vcd`
-
+ 
+     
    <img width="542" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/bd4493f9-da25-45ce-b9a6-660944032e75">
    
 
-  <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/472e9a2d-bb95-437d-b790-cfe72294ad07">
+  <img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/472e9a2d-bb95-437d-b790-cfe72294ad07">
+  
 
 + **Synthesis**
   - `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
