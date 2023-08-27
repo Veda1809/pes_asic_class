@@ -977,7 +977,7 @@ It gives a report of what cells are used and the number of input and output sign
 
    <img width="542" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/bd4493f9-da25-45ce-b9a6-660944032e75">
 
-  <img width="382" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/472e9a2d-bb95-437d-b790-cfe72294ad07">
+  <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/472e9a2d-bb95-437d-b790-cfe72294ad07">
 
 + **Synthesis**
   - `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
@@ -1004,7 +1004,7 @@ It gives a report of what cells are used and the number of input and output sign
 + `read_verilog mult_2.v`
 + `synth -top mul2`
 
- <img width="239" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/05011316-bfc4-41c3-8e87-46855d117243">
+ <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/05011316-bfc4-41c3-8e87-46855d117243">
 
 + `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
 + `show`
@@ -1024,16 +1024,16 @@ It gives a report of what cells are used and the number of input and output sign
 + `read_verilog mult_8.v`
 + `synth -top mult8`
 
-<img width="202" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/13359e0d-0676-4313-b791-3992655ee4f7">
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/13359e0d-0676-4313-b791-3992655ee4f7">
 
 + `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
 + `show`
 
-<img width="305" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/4c8b811f-b793-45fa-a8e7-a65663ef3f74">
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/4c8b811f-b793-45fa-a8e7-a65663ef3f74">
 
 + `write_verilog -noattr mult8_netlist.v`
 + `!gvim mult8_netlist.v`
 
-<img width="377" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/37c89aea-497d-4e0d-99c5-c46dffd63b7d">
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/37c89aea-497d-4e0d-99c5-c46dffd63b7d">
 
 </details>
