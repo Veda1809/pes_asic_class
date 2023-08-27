@@ -106,12 +106,9 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
    - iVerilog GTKwave Part-2
 + [Introduction to Yosys and Logic synthesis](#introduction-to-yosys-and-logic-synthesis)
    - Introduction to Yosys
-   - Introduction to Logic Synthesis Part-1
-   - Introduction to Logic Synthesis Part-2
+   - Introduction to Logic Synthesis
 + [Labs using Yosys and Sky130 PDKs](#labs-using-yosys-and-sky130-pdks)
-   - Yosys 1 good mux Part-1
-   - Yosys 1 good mux Part-2
-   - Yosys 1 good mux Part-3
+   - Yosys 1 good mux 
   
 # Day-1   
 ## Introduction to Basic Keywords
@@ -657,5 +654,96 @@ endmodule
    - The vcd file generated is fed to the gtkwave simulator.
    - The output on the simulator must be same as the output observed during RTL simulation.
    - Same RTL testbench can be used as the primary inputs and primary outputs remain same between the RTL design and synthesised netlist.
+
+</details>
+
+<details>
+<summary> Introduction to Logic Synthesis </summary>
+
++ **Logic Synthesis**
+  - Logic synthesis is a process in digital design that transforms a high-level hardware description of a digital circuit, typically in a hardware description language (HDL) like Verilog or VHDL, into a lower-level representation composed of logic gates and flip-flops.
+  - The goal of logic synthesis is to optimize the design for various criteria such as performance, area, power consumption, and timing.
+
+ + **.lib**
+   - It is a collection of logical modules like And, Or, Not etc.
+   - It has different flavors of same gate like 2 input AND gate, 3 input AND gate etc with different performace speed.
+  
++ **Why different flavors  of gate?**
+  - In order to make a circuit faster, the clock frequency should be high.
+  - For that, the time period of the clock should be as low as possible.
+  
+<img width="269" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/bc2242db-49e8-4c19-a06e-8f8e82f55729">
+
++ In a sequential circuit, clock period depends on:
+  - Clock to Q of flip-flop A.
+  - Propagation delay of combinational circuit.
+  - Setup time of flip-flop B.
+
+<img width="142" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/112de4cd-6e0c-46ec-ad94-0cb6540af7e1">
+
++ **Why need fast and slow cells?**
+  - To ensure that there are no HOLD issues at flip-flop B, we require slow cells.
+  - For a smaller propagation time, we need faster cells.
+
+</details>
+
+## Labs using Yosys and Sky130 PDKs
+<details>
+<summary> Yosys good_mux  </summary>	
+
++ To invoke **yosys**
+  - `cd`
+  - `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
+  - Type `yosys`
+
+  <img width="396" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/9e007d9e-c66d-4f8d-a4db-0dadd4bada38">
+
++ To read the library
+    
+     ` read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+    
++ To read the design
+
+    `read_verilog good_mux.v`
+
+ + To syntheis the module
+
+      ` synth -top good_mux`
+
+  <img width="334" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/f75014c5-c9f0-4813-ae56-ddbb71f79111">
+  <img width="287" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/4ab7cd35-c5d7-4ca9-a310-8d76056a67e1">
+
++ To generate the netlist
+
+  `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+
+  <img width="271" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/97358dfc-ec44-40e0-ac79-97c3576e6300">
+
+It gives a report of what cells are used and the number of input and output signals.
+
++ To see the logic realised
+
+  `show`
+
+  <img width="300" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/9b2957ea-f0bc-4f2c-b796-aa565bd0865c">
+
+  The mux is completely realised in the form of sky130 library cells.
+
++ To write the netlist
+
+   - `write_verilog good_mux_netlist.v`
+   - `!gvim good_mux_netlist.v`
+     
+   - To view a smaller code
+     
+     ` write_verilog -noattr good_mux_netlist.v`
+     
+     `!gvim good_mux_netlist.v`
+  
+  
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/74fc2a01-3c35-4db1-8220-96595c6c236e">
+
+<img width="479" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/7adc16f5-f635-4532-b90c-a9f9c496f95f">
+
 
 </details>
