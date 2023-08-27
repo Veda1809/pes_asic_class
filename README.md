@@ -625,3 +625,37 @@ endmodule
 ```
 
 </details>
+
+## Introduction to Yosys and Logic Synthesis
+
+<details>
+<summary> Introduction to Yosys </summary>
+
++ **Synthesizer**
+  - It is a tool used for converting RTL design code to netlist.
+  - Here, the synthesizer used is **Yosys**.
+
++ **Yosys**
+  - It is an open-source framework for Verilog RTL synthesis and formal verification.
+  - Yosys provides a collection of tools and algorithms that enable designers to transform high-level RTL (Register Transfer Level) descriptions of digital circuits into optimized gate-level representations suitable for physical implementation on hardware.
+
+ <img width="561" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/5f879aaa-ec65-4362-9f91-f39999069732">
+
+   - Design and .lib files are fed to the synthesizer to get a netlist file.
+   - **Netlist** is the representation of the design in the form of standard cells in the .lib
+     
++ Commands used to perform different opertions:
+  - `read_verilog` to read the design
+  - `read_liberty` to read the .lib file
+  - `write_verilog` to write out the netlist file
+ 
++ To verify the synthesis
+
+<img width="566" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/fd73f6b8-f594-4e4f-bb1a-b600fb4475f8">
+
+   - Netlist along with the tesbench is fed to the iverilog simulator.
+   - The vcd file generated is fed to the gtkwave simulator.
+   - The output on the simulator must be same as the output observed during RTL simulation.
+   - Same RTL testbench can be used as the primary inputs and primary outputs remain same between the RTL design and synthesised netlist.
+
+</details>
