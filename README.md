@@ -118,7 +118,7 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 + [Hierarchical vs Flat Synthesis](#hierarchical-vs-flat-synthesis)
   - Hierarchical Synthesis Flat Synthesis
  
-+ [Various Flop Coding Styles and optimization](#various-flop-coding-styles-and-optimization)
++ [Various Flop Coding Styles and Optimization](#various-flop-coding-styles-and-optimization)
   - Why Flops and Flop Coding Styles
   - Lab Flop Synthesis Simulations
   - Interesting optimisations
@@ -864,5 +864,176 @@ It gives a report of what cells are used and the number of input and output sign
 <img width="365" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/18760a81-9f03-4b11-9b8f-dd4758a25ab7">
 <img width="300" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/e3a80209-7339-4cef-833c-2c3bb1fc4dec">
 
+
+</details>
+
+## Various Flop Coding Styles and Optimization
+<details>
+<summary> Why Flops and Flop Coding Styles</summary>	
+
+**Why do we need a Flop?**
+
++ A flip-flop (often abbreviated as "flop") is a fundamental building block in digital circuit design.
++ It's a type of sequential logic element that stores binary information (0 or 1) and can change its output based on clock signals and input values.
++ In a combinational circuit, the output changes after the propagation delay of the circuit once inputs are changed.
++ During the propagation of data, if there are different paths with different propagation delays, then a glitch might occur.
++ There will be multiple glitches for multiple combinational circuits.
++ Hence, we need flops to store the data from the combinational circuits.
++ When a flop is used, the output of combinational circuit is stored in it and it is propagated only at the posedge or negedge of the clock so that the next combinational circuit gets a glitch free input thereby stabilising the output.
++ We use control pins like **set** and **reset** to initialise the flops.
++ They can be synchronous and asynchronous.
+
+**D Flip-Flop with Asynchronous Reset**
++ When the reset is high, the output of the flip-flop is forced to 0, irrespective of the clock signal.
++ Else, on the positive edge of the clock, the stored value is updated at the output.
+
+ `gvim dff_asyncres_syncres.v`
+ 
+<img width="445" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/582609c7-faf6-4981-9643-ec5ad543b65f">
+
+**D Flip_Flop with Asynchronous Set**
++ When the set is high, the output of the flip-flop is forced to 1, irrespective of the clock signal.
++ Else, on positive edge of the clock, the stored value is updated at the output.
+
+`gvim dff_async_set.v`
+
+<img width="357" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/f45ca71f-8eef-402a-a966-9035a51fa21d">
+
+**D Flip-Flop with Synchronous Reset**
++ When the reset is high on the positive edge of the clock, the output of the flip-flop is forced to 0.
++ Else, on the positive edge of the clock, the stored value is updated at the output.
+
+  `gvim dff_syncres.v`
+
+<img width="409" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d22a7aa2-059f-48bd-b0c4-32a294248c8b">
+
+**D Flip-Flop with Asynchronous Reset and Synchronous Reset**
++ When the asynchronous resest is high, the output is forced to 0.
++ When the synchronous reset is high at the positive edge of the clock, the output is forced to 0.
++ Else, on the positive edge of the clock, the stored value is updated at the output.
++ Here, it is a combination of both synchronous and asynchronous reset DFF.
+
+`gvim dff_asyncres_syncres.v`
+
+<img width="439" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/8ee2f2a5-31e9-447c-a23f-b347fc7b642c">
+
+</details>
+
+<details>
+<summary> Lab Flop Synthesis Simulations </summary>	
+
+**D Flip-Flop with Asynchronous Reset**
++ **Simulation**
+  - `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
+  - `iverilog dff_asyncres.v tb_dff_asyncres.v`
+  - `./a.out`
+  - `gtkwave tb_dff_asyncres.vcd`
+  
+<img width="549" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c114ede9-357a-4d75-9f4a-dea6fd71f1ce">
+
+<img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/326bf88d-74d9-407f-8c45-1e1e28ea1911">
+
++ **Synthesis**
+  - `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
+  - `yosys`
+  - `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+  - `read_verilog dff_asyncres.v`
+  - `synth -top dff_asyncres`
+  - `dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+  - `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+  - `show`
+
+    <img width="925" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/92f225cf-a014-4a89-be7a-a9560a6d6359">
+
+ **D Flip_Flop with Asynchronous Set**
+ + **Simulation**
+   - `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
+   - `iverilog dff_async_set.v tb_dff_async_set.v`
+   - `./a.out`
+   - `gtkwave tb_dff_async_set.vcd`
+
+<img width="551" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3d0eebd4-1d03-4bdb-9f76-4907b8b87ac3">
+
+<img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/51dd2cf5-ea6c-4b00-bf2a-5ae8674e2272">
+
++ **Synthesis**
+  - `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
+  - `yosys`
+  - `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+  - `read_verilog dff_async_set.v`
+  - `synth -top dff_async_set`
+  - `dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+  - `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+  - `show` 
+
+<img width="922" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/87e93a5e-c904-4eca-b3a7-4657c8f8f0cc">
+
+**D Flip-Flop with Synchronous Reset**
++ **Simulation**
+   - `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
+   - `iverilog dff_syncres.v tb_dff_syncres.v`
+   - `./a.out`
+   - `gtkwave tb_dff_syncres.vcd`
+
+   <img width="542" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/bd4493f9-da25-45ce-b9a6-660944032e75">
+
+  <img width="382" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/472e9a2d-bb95-437d-b790-cfe72294ad07">
+
++ **Synthesis**
+  - `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
+  - `yosys`
+  - `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+  - `read_verilog dff_syncres.v`
+  - `synth -top dff_syncres`
+  - `dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib `
+  - `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+  - `show`
+
+<img width="925" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/ff5b11e7-11a8-40c9-9e08-e090eeb0f547">
+
+</details>
+
+<details>
+<summary> Interesting Optimisations </summary>	
+
++ `gvim mult_2.v`
+
+ <img width="434" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d37ce39a-16c6-428a-a6be-ef6a5fc3c2aa">
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog mult_2.v`
++ `synth -top mul2`
+
+ <img width="239" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/05011316-bfc4-41c3-8e87-46855d117243">
+
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+ <img width="305" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/fb4d176c-0d06-43e3-bad9-7945e02c2889">
+
++ `write_verilog -noattr mul2_netlist.v`
++ `!gvim mul2_netlist.v`
+  
+ <img width="436" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/9a0eca57-0656-4cb3-99f0-ad7a0d0f356e">
+
++ `gvim mult_8.v`
+
+  <img width="443" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3f9fa46f-56b9-43bf-8d46-325d75f76a95">
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  `
++ `read_verilog mult_8.v`
++ `synth -top mult8`
+
+<img width="202" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/13359e0d-0676-4313-b791-3992655ee4f7">
+
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="305" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/4c8b811f-b793-45fa-a8e7-a65663ef3f74">
+
++ `write_verilog -noattr mult8_netlist.v`
++ `!gvim mult8_netlist.v`
+
+<img width="377" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/37c89aea-497d-4e0d-99c5-c46dffd63b7d">
 
 </details>
