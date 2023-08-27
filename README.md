@@ -108,7 +108,7 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
    - Introduction to Yosys
    - Introduction to Logic Synthesis
 + [Labs using Yosys and Sky130 PDKs](#labs-using-yosys-and-sky130-pdks)
-   - Yosys 1 good mux
+   - Yosys good mux
  
 ## DAY 4
 **Timing Libs, Hierarchical vs Flat Synthesis and Efficient Flop Coding Styles**
