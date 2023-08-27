@@ -802,8 +802,21 @@ It gives a report of what cells are used and the number of input and output sign
 + To view all the cells `:g//`
 + To view any instance `:/instance`
 + Since there are 5 inputs, for all the 32 possible combinations, it gives the delay, power and all the other parameters for each cell.
-+ The below image shows the power consumption comparision.
++ The below image shows the power consumption and area comparision.
   
 <img width="911" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/2a6b20a3-33d1-47e0-814f-6cff100ec2a7">
 
+</details>
+
+## Hierarchical vs Flat Synthesis
+<details>
+<summary> Hierarchical Synthesis Flat Synthesis </summary>	
+
++ The file we used in this lab is `multiple_modules.v`
+  
+`gvim multiple_modules.v`
+
+<img width="321" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/384b4475-a6e7-4905-9a70-cfdff657e6db">
+
+`multiple_modules` instantiates `sub_module1` and `sub_module2`	.
 </details>
