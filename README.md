@@ -122,6 +122,13 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   - Why Flops and Flop Coding Styles
   - Lab Flop Synthesis Simulations
   - Interesting optimisations
+
+## DAY 5
+**Combinational and Sequential Optmizations**
++ [Introduction to Optimisations](#introduction-to-optimisations)
++ [Combinational Logic Optimisations](#combinational-logic-optimisations)
++ [Sequential Logic Optimisations](#sequential-logic-optmisations)
++ [Sequential Optimisations for Unused Outputs](#sequential-optmisations-for-unused-outputs)
   
 # Day-1   
 ## Introduction to Basic Keywords
@@ -1039,5 +1046,135 @@ It gives a report of what cells are used and the number of input and output sign
 + `!gvim mult8_netlist.v`
 
 <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/37c89aea-497d-4e0d-99c5-c46dffd63b7d">
+
+</details>
+
+# Day 5
+## Introduction to Optimisations 
+
+<details>
+<summary> Combinational Optimisation </summary>
+	
++ Combinational logic refers to logic circuits where the outputs depend only on the current inputs and not on any previous states.
++ Combinational optimization is a field of study in computer science and operations research that focuses on finding the best possible solution from a finite set of options for problems that involve discrete variables and have no inherent notion of time.
++ Optimising the combinational logic circuit is squeezing the logic to get the most optimized digital design so that the circuit finally is area and power efficient.
++ Techniques for Optimisations:
+  - **Constant propagation** is an optimization technique used in compiler design and digital circuit synthesis to improve the efficiency of code and circuit implementations by replacing variables or expressions with their constant values where applicable.
+  - **Boolean logic optimization**, also known as logic minimization or Boolean function simplification, is a process in digital design that aims to simplify Boolean expressions or logic circuits by reducing the number of terms, literals, and gates required to implement a given logical function.
+
+</details>
+
+<details>
+<summary> Sequential Logic Optimisations </summary>	
+
++ Sequential logic optimizations involve improving the efficiency, performance, and resource utilization of digital circuits that include memory elements like flip-flops and latches.
++ Optimizing sequential logic is crucial in ensuring that digital circuits meet timing requirements, consume minimal power, and occupy the least possible area while maintaining correct functionality.
++ Optimisation methods:
+  - **Sequential constant propagation**, also known as constant propagation across sequential elements, is an optimization technique used in digital design to identify and propagate constant values through sequential logic elements like flip-flops and registers. This technique aims to replace variable values with their known constant values at various stages of the logic circuit, optimizing the design for better performance and resource utilization.
+  - **State optimization**, also known as state minimization or state reduction, is an optimization technique used in digital design to reduce the number of states in finite state machines (FSMs) while preserving the original functionality.
+  - **Sequential logic cloning**, also known as retiming-based cloning or register cloning, is a technique used in digital design to improve the performance of a circuit by duplicating or cloning existing registers (flip-flops) and introducing additional pipeline stages. This technique aims to balance the critical paths within a circuit and reduce its overall clock period, leading to improved timing performance and better overall efficiency.
+  - **Retiming** is an optimization technique used in digital design to improve the performance of a circuit by repositioning registers (flip-flops) along its paths to balance the timing and reduce the critical path delay. The primary goal of retiming is to achieve a shorter clock period without changing the functionality of the circuit.
+ 
+</details>
+
+## Combinational Logic Optimisations
+
+<details>
+<summary> opt_check </summary>	
+	
++ `gvim opt_check.v`
+
+  <img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/dad0961e-10d4-4a0c-9991-0ad6daea169f">
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog opt_check.v`
++ `synth -top opt_check`
++ `opt_clean -purge`
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+  <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/44d6a65e-1405-49b6-a569-66a7c976308c">
+
+  <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/8861528b-55be-45e4-952e-c0600c811685">
+
+</details>
+
+<details>
+<summary> opt_check2 </summary>	
+	
++ `gvim opt_check2.v`
+
+  <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d957a7b5-fb8a-4e59-a9d3-cb1730a7dd25">
+  
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog opt_check2.v`
++ `synth -top opt_check2`
++ `opt_clean -purge`
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c85299a9-10df-4b40-8f0f-f19ead681ad3">
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d0b4fb18-71ff-4aa6-92b9-49eac8dd889b">
+
+</details>
+
+<details>
+<summary> opt_check3 </summary>	
+	
++ `gvim opt_check3.v`
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3183db65-f77d-443a-9814-dc776c3c0990">
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog opt_check3.v`
++ `synth -top opt_check3`
++ `opt_clean -purge`
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/13709061-55c2-43ca-b798-c8398e1c7fdb">
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/2c885b4d-c274-4bae-abd0-15853f864f62">
+
+</details>
+
+<details>
+<summary> opt_check4 </summary>
+	
++ `gvim opt_check4.v`
+
+ <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/75c65195-8f6b-416e-8074-306a46263746">
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog opt_check4.v`
++ `synth -top opt_check4`
++ `opt_clean -purge`
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/a1acd352-c271-4330-9fd8-6aafe72b8f11">
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/498cf442-ec8e-468e-a310-d1f93b93ce1a">
+
+</details>
+
+<details>
+<summary> multiple_module_opt </summary>
+	
++ `gvim multiple_module_opt.v`
+
+ <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/ad570bd8-44b5-4408-8715-02f1c5d15a29">
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog multiple_module_opt.v`
++ `synth -top multiple_module_opt`
++ `opt_clean -purge`
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+ 
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/4c3fd4bc-c599-41cf-af42-c07280dcca11">
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/1344d22d-51f5-439e-bc34-96b2a742474e">
 
 </details>
