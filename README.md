@@ -697,7 +697,22 @@ endmodule
 + **Why need fast and slow cells?**
   - To ensure that there are no HOLD issues at flip-flop B, we require slow cells.
   - For a smaller propagation time, we need faster cells.
+  - The collection forms the .lib
 
++ **Faster Cells vs Slower Cells**
+  - Load in digital circuit is of Capacitence.
+  - Faster the charging or dicharging of capacitance, lesser is the cell delay.
+  - However, for a quick charge/ discharge of capacitor, we need transistors capable of sourcing more current i.e, we need **wide transistors**.
+  - Wider transistors have lesser delay but consume more area and power.
+  - Narrow transistors have more delay but consume less area and performance.
+  - Faster cells come with a cost of area and power.
+ 
++ **Selection of the Cells**
+  - We have to guide the Synthesizer to choose the flavour of cells that is optimum for implementation of logic circuit.
+  - More use of faster cells leads to bad circuit in terms of power and area and also hold time violations.
+  - More use of slower cells leads to sluggish circuits amd may not meet the performance needs.
+  - Hence the guidance is offered to the synthesiser in the form of **constraints**.
+ 
 </details>
 
 ## Labs using Yosys and Sky130 PDKs
@@ -765,4 +780,30 @@ It gives a report of what cells are used and the number of input and output sign
 ## Introduction to Timing Dot Libs
 <details>
 <summary> Introduction to Dot Lib </summary>	
+
++ To view the contents in the .lib
+
+  `gvim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+
+  <img width="443" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/91edd5d4-bb82-48ec-b0bd-ca233d8a8063">
+
+  + The first line in the file `library ("sky130_fd_sc_hd__tt_025C_1v80") ` :
+    
+    - tt : indicates variations due to process and here it indicates **Typical Process**.
+    - 025C : indicates the variations due to temperatures where the silicon will be used.
+    - 1v80 : indicates the variations due to the voltage levels where the silicon will be incorporated.
++ It also displays the units of various parameters.
+
+  <img width="284" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d01d750e-fc1c-4de0-8e72-e6842c14f90b">
+  <img width="229" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/39f26ac7-7302-4dc7-a517-6a5a031e2cae">
+
++ It gives the features of the cells
++ To enable line number `:se nu`
++ To view all the cells `:g//`
++ To view any instance `:/instance`
++ Since there are 5 inputs, for all the 32 possible combinations, it gives the delay, power and all the other parameters for each cell.
++ The below image shows the power consumption comparision.
+  
+<img width="911" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/2a6b20a3-33d1-47e0-814f-6cff100ec2a7">
+
 </details>
