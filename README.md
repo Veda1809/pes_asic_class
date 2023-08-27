@@ -108,7 +108,20 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
    - Introduction to Yosys
    - Introduction to Logic Synthesis
 + [Labs using Yosys and Sky130 PDKs](#labs-using-yosys-and-sky130-pdks)
-   - Yosys 1 good mux 
+   - Yosys 1 good mux
+ 
+## DAY 4
+**Timing Libs, Hierarchical vs Flat Synthesis and Efficient Flop Coding Styles**
++ [Introduction to Timing Dot Libs](#introduction-to-timing-dot-libs)
+  - Introduction to Dot Lib
+ 
++ [Hierarchical vs Flat Synthesis](#hierarchical-vs-flat-synthesis)
+  - Hierarchical Synthesis Flat Synthesis
+ 
++ [Various Flop Coding Styles and optimization](#various-flop-coding-styles-and-optimization)
+  - Why Flops and Flop Coding Styles
+  - Lab Flop Synthesis Simulations
+  - Interesting optimisations
   
 # Day-1   
 ## Introduction to Basic Keywords
@@ -746,4 +759,10 @@ It gives a report of what cells are used and the number of input and output sign
 <img width="479" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/7adc16f5-f635-4532-b90c-a9f9c496f95f">
 
 
+</details>
+
+# Day 4
+## Introduction to Timing Dot Libs
+<details>
+<summary> Introduction to Dot Lib </summary>	
 </details>
