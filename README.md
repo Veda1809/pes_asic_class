@@ -954,6 +954,7 @@ It gives a report of what cells are used and the number of input and output sign
 
 <img width="551" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3d0eebd4-1d03-4bdb-9f76-4907b8b87ac3">
 
+
 <img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/51dd2cf5-ea6c-4b00-bf2a-5ae8674e2272">
 
 + **Synthesis**
@@ -976,6 +977,7 @@ It gives a report of what cells are used and the number of input and output sign
    - `gtkwave tb_dff_syncres.vcd`
 
    <img width="542" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/bd4493f9-da25-45ce-b9a6-660944032e75">
+   
 
   <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/472e9a2d-bb95-437d-b790-cfe72294ad07">
 
