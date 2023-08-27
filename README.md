@@ -812,11 +812,57 @@ It gives a report of what cells are used and the number of input and output sign
 <details>
 <summary> Hierarchical Synthesis Flat Synthesis </summary>	
 
-+ The file we used in this lab is `multiple_modules.v`
+**Hierarchical Synthesis**
+  Hierarchical synthesis is an approach in digital design and logic synthesis where complex designs are broken down into smaller, more manageable modules or sub-circuits, and each module is synthesized individually. These synthesized modules are then integrated back into the overall design hierarchy. This approach helps manage the complexity of large designs and allows designers to work on different parts of the design independently.
   
-`gvim multiple_modules.v`
++ The file we used in this lab is `multiple_modules.v`
+
+  - `cd vsd/sky130RTLDesignAndSynthesisWorkshop/verilog_files`
+  -  `gvim multiple_modules.v`
 
 <img width="321" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/384b4475-a6e7-4905-9a70-cfdff657e6db">
 
-`multiple_modules` instantiates `sub_module1` and `sub_module2`	.
++  `multiple_modules` instantiates `sub_module1` and `sub_module2`
+
++  Launch `yosys`
++  read the library file  `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++  read the verilog file ` read_verilog multiple_modules.v`
++  `synth -top multiple_modules` to set it as top module
+
+  <img width="380" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/a69395c3-1e50-49cc-b356-6afe8b1f9c5e">
+  <img width="219" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/7163c184-566d-4568-abff-fcda8f6c9f63">
+  
++  `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ To view the netlist `show multiple_modules`
+
+  <img width="304" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/721a0563-1fbe-4ce7-975c-0ef8d50e7fe6">
+
+- Here it shows `sub_module1` and `sub_module2` instead of AND gate and OR gate.
+
++ `write_verilog -noattr multiple_modules_hier.v`
++ `!gvim multiple_modules_hier.v`
+
+<img width="371" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/fcc68430-e284-4b54-80af-dfbcfbade0ea">
+ <img width="165" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/4e8ffd10-6efb-4d2d-878e-221d685502c1">
+
+ **Flattened Synthesis**
+  Flattened synthesis is the opposite of hierarchical synthesis. Instead of maintaining the hierarchical structure of the design during synthesis, flattened synthesis combines all modules and sub-modules into a single, flat representation. This means that the entire design is synthesized as a single unit, without preserving the modular organization present in the original high-level description.
+
++  Launch `yosys`
++  read the library file  `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++  read the verilog file ` read_verilog multiple_modules.v`
++  `synth -top multiple_modules` to set it as top module
++  `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `flatten` to write out a flattened netlist
++ `show`
+
+<img width="924" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/bd069e1f-4da5-473a-b041-562cbef042f0">
+
++ `write_verilog -noattr multiple_modules_flat.v`
++ `!gvim multiple_modules_flat.v`
+  
+<img width="365" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/18760a81-9f03-4b11-9b8f-dd4758a25ab7">
+<img width="124" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/e3a80209-7339-4cef-833c-2c3bb1fc4dec">
+
+
 </details>
