@@ -127,7 +127,7 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 
 ## DAY 6
 **GLS, Blocking vs Non-Blocking and Synthesis-Simulation Mismatch**
-+ [GLS Synthesis-Simulation Mismatch and Blocking Non-Blocking Statements](##gls-synthesis-simulation-mismatch-and-blocking-non-blocking-statements)
++ [GLS Synthesis-Simulation Mismatch and Blocking Non-Blocking Statements](#gls-synthesis-simulation-mismatch-and-blocking-non-blocking-statements)
   - GLS Concepts And Flow Using Iverilog
   - Synthesis Simulation Mismatch
   - Blocking And Non Blocking Statements In Verilog
