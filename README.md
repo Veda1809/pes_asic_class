@@ -127,8 +127,8 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 **Combinational and Sequential Optmizations**
 + [Introduction to Optimisations](#introduction-to-optimisations)
 + [Combinational Logic Optimisations](#combinational-logic-optimisations)
-+ [Sequential Logic Optimisations](#sequential-logic-optmisations)
-+ [Sequential Optimisations for Unused Outputs](#sequential-optmisations-for-unused-outputs)
++ [Sequential Logic Optimisations](#sequential-logic-optimisations)
++ [Sequential Optimisations for Unused Outputs](#sequential-optimisations-for-unused-outputs)
   
 # Day-1   
 ## Introduction to Basic Keywords
