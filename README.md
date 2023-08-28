@@ -1295,3 +1295,44 @@ It gives a report of what cells are used and the number of input and output sign
 <img width="923" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/8d95c49d-9fd9-4d76-bba1-b893c6f163fc">
 
 </details>
+
+## Sequential Optimisations for Unused Outputs
+<details>
+<summary> counter_opt </summary>
+
+ + `gvim counter_opt.v`
+
+<img width="349" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/cb5798fa-2ee9-4cf0-9372-3da9ff17bd66">
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog counter_opt.v`
++ `synth -top counter_opt`
++ `dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="184" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/1c876b33-9d26-4efe-95cf-5d0814415da5">
+
+<img width="923" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/b65d5ac8-3961-4a7b-9e8a-18bc0229f104">
+
+</details>
+
+<details>
+<summary> counter_opt2 </summary>	
+
++ `gvim counter_opt2.v`
+
+ <img width="347" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/b6262d9a-5892-4360-91fa-18f7e2aa39e7">
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog counter_opt2.v`
++ `synth -top counter_opt2`
++ `dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+ <img width="200" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/14aadea7-9607-40a8-b5ed-e48eb255cd10">
+
+<img width="923" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/78af2250-6ee8-4d94-b91b-138cb2877b1e">
+
+</details>
