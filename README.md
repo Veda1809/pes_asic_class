@@ -71,12 +71,10 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   - Introduction
   - From Apps to Hardware
   - Detail Description of Course Content
-
 + [Labwork for RISCV Toolchain](#labwork-for-riscv-toolchain)
   - C Program
   - RISCV GCC Compiler and Dissemble
   - Spike Simulation and Debug
-
 + [Integer Number Representation](#integer-number-representation) 
   - 64-bit Unsigned Numbers
   - 64-bit Signed Numbers
@@ -89,7 +87,6 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
   - Memory Allocation for Double Words
   - Load, Add and Store Instructions
   - 32-Registers and their ABI Names
-
 + [Labwork using ABI Function Calls](#labwork-using-abi-function-calls)
   - Algorithm for C Program using ASM
   - Review ASM Function Calls
@@ -114,10 +111,8 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 **Timing Libs, Hierarchical vs Flat Synthesis and Efficient Flop Coding Styles**
 + [Introduction to Timing Dot Libs](#introduction-to-timing-dot-libs)
   - Introduction to Dot Lib
- 
 + [Hierarchical vs Flat Synthesis](#hierarchical-vs-flat-synthesis)
-  - Hierarchical Synthesis Flat Synthesis
- 
+  - Hierarchical Synthesis Flat Synthesis 
 + [Various Flop Coding Styles and Optimization](#various-flop-coding-styles-and-optimization)
   - Why Flops and Flop Coding Styles
   - Lab Flop Synthesis Simulations
@@ -129,7 +124,17 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 + [Combinational Logic Optimisations](#combinational-logic-optimisations)
 + [Sequential Logic Optimisations](#sequential-logic-optimisations)
 + [Sequential Optimisations for Unused Outputs](#sequential-optimisations-for-unused-outputs)
-  
+
+## DAY 6
+**GLS, Blocking vs Non-Blocking and Synthesis-Simulation Mismatch**
++ [GLS Synthesis-Simulation Mismatch and Blocking Non-blocking Statements](##gls-synthesis-simulation-mismatch-and-blocking-non-blocking-statements)
+  - GLS Concepts And Flow Using Iverilog
+  - Synthesis Simulation Mismatch
+  - Blocking And Non Blocking Statements In Verilog
+  - Caveats With Blocking Statements
++ [Labs on GLS and Synthesis-Simulation Mismatch](#labs-on-gls-and-synthesis-simulation-mismatch)
++ [Labs on Synth-Sim Mismatch for Blocking Statement](#labs-on-synth-sim-mismatch-for-blocking-statement)
+
 # Day-1   
 ## Introduction to Basic Keywords
 <details>
@@ -1334,5 +1339,198 @@ It gives a report of what cells are used and the number of input and output sign
  <img width="200" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/14aadea7-9607-40a8-b5ed-e48eb255cd10">
 
 <img width="923" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/78af2250-6ee8-4d94-b91b-138cb2877b1e">
+
+</details>
+
+# Day 6
+## GLS Synthesis-Simulation Mismatch and Blocking Non-blocking Statements
+
+<details>
+<summary> GLS Concepts And Flow Using Iverilog </summary>	
+
+ + **Gate Level Simualtion**
+   - Gate-level simulation is a technique used in digital design and verification to validate the functionality of a digital circuit at the gate-level implementation.
+   - It involves simulating the circuit using the actual logic gates and flip-flops that make up the design, as opposed to higher-level abstractions like RTL (Register Transfer Level) descriptions.
+   - This type of simulation is typically performed after the logic synthesis process, where a high-level description of the design is transformed into a netlist of gates and flip-flops.
+   - We perform this to verify logical correctness of the design after synthesizing it. Also ensuring the timing of the design is met.
+  
+<img width="608" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/6298b067-2f45-4dbc-ad25-762ac3d8be63">
+
++ **Synthesis-Simulation Mismatch**
+  - A synthesis-simulation mismatch refers to a situation in digital design where the behavior of a circuit, as observed during simulation, doesn't match the expected or desired behavior of the circuit after it has been synthesized.
+  - This discrepancy can occur due to various reasons, such as timing issues, optimization conflicts, and differences in modeling between the simulation and synthesis tools.
+  - This mismatch is a critical concern in digital design because it indicates that the actual hardware implementation might not perform as expected, potentially leading to functional or timing failures in the fabricated chip.
+
++ **Blocking Statements**
+  - Blocking statements are executed sequentially in the order they appear in the code and have an immediate effect on signal assignments.
+  - Example:
+
+  ``` v
+   module BlockingExample(input A, input B, input C, output Y, output Z);
+    wire temp;
+
+    // Blocking assignment
+    assign temp = A & B;
+
+    always @(posedge C) begin
+        // Blocking assignment
+        Y = temp;
+        Z = ~temp;
+    end
+   endmodule
+  ```
+
++ **Non-Blocking Statements**
+  - Non-blocking assignments are used to model concurrent signal updates, where all assignments are evaluated simultaneously and then scheduled to be updated at the end of the time step.
+  - Example:
+   ``` v
+    module NonBlockingExample(input clock, input D, input reset, output reg Q);
+
+    always @(posedge clock or posedge reset) begin
+        if (reset)
+            Q <= 0;  // Reset the flip-flop
+        else
+            Q <= D;  // Non-blocking assignment to update Q with D on clock edge
+    end
+  endmodule
+   ```
+
++ **Caveats with Blocking Statements**
+  + Blocking statements in hardware description languages like Verilog have their uses, but there are certain caveats and considerations to be aware of when working with them. Here are some important caveats associated with using blocking statements:
+    - Procedural Execution: Blocking statements are executed sequentially in the order they appear within a procedural block (such as an always block). This can lead to unexpected behavior if the order of execution matters and is not well understood.
+    - Lack of Parallelism: Blocking statements do not accurately represent the parallel nature of hardware. In hardware, multiple signals can update concurrently, but blocking statements model sequential behavior. As a result, using blocking statements for modeling complex concurrent logic can lead to incorrect simulations.
+    - Race Conditions: When multiple blocking assignments operate on the same signal within the same procedural block, a race condition can occur. The outcome of such assignments depends on their order of execution, which might lead to inconsistent or unpredictable behavior.
+    - Limited Representation of Hardware: Hardware systems are inherently concurrent and parallel, but blocking statements do not capture this aspect effectively. Using blocking assignments to model complex combinational or sequential logic can lead to models that are difficult to understand, maintain, and debug.
+    - Combinatorial Loops: Incorrect use of blocking statements can lead to unintentional combinational logic loops, which can result in simulation or synthesis errors.
+    - Debugging Challenges: Debugging code with many blocking assignments can be challenging, especially when trying to track down timing-related issues.
+    - Not Suitable for Flip-Flops: Blocking assignments are not suitable for modeling flip-flop behavior. Non-blocking assignments (<=) are generally preferred for modeling flip-flop updates to ensure accurate representation of concurrent behavior.
+    - Sequential Logic Misrepresentation: Using blocking assignments to model sequential logic might not capture the intended behavior accurately. Sequential elements like registers and flip-flops are better represented using non-blocking assignments.
+    - Synthesis Implications: The behavior of blocking assignments might not translate well during synthesis, leading to potential mismatches between simulation and synthesis results.
+
+</details>
+
+## Labs on GLS and Synthesis-Simulation Mismatch
+<details>
+<summary> ternary_operator_mux </summary>	
+
++ `gvim teranry_operator_mux.v`
+
+<img width="370" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/8539ab94-8f5a-4bff-8465-eb8bb6ca83b8">
+
+**Simulation**
+
++ `iverilog ternary_operator_mux.v tb_ternary_operator_mux.v`
++ `./a.out`
++ `gtkwave tb_ternary_operator_mux.vcd`
+
+<img width="626" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/893dc1c8-bc64-41bf-bb35-ee83e37b023d">
+
+<img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c675c505-880e-4c15-b079-3c528032c279">
+
+**Synthesis**
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog ternary_operator_mux.v`
++ `synth -top ternary_operator_mux`
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/74fa07aa-5dc3-4f04-8fc1-babe67ded667">
+
+<img width="299" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/9a4f4ebd-370f-45b5-a1c1-cd95b8e1e556">
+
+**GLS to Gate-Level Simulation**
+
++ `iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v`
++ `./a.out`
++ `gtkwave tb_bad_mux.vcd`
+
+<img width="928" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/97f59e19-d561-4c1e-b8b5-46fb1eb21595">
+
+<img width="498" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/5c4652e6-8364-4e81-9cd3-f1795f5d321a">
+
+</details>
+
+<details>
+<summary> bad_mux </summary>	
+
+ + `gvim bad_mux.v`
+
+ <img width="290" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/deb388a2-8463-410b-b16e-5eaf81697d69">
+
+**Simualtion**
+
++ `iverilog bad_mux.v tb_bad_mux.v`
++ `./a.out`
++ `gtkwave tb_bad_mux.vcd`
+
+<img width="501" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/9c68b293-6f55-4742-bb06-5cdf9551a5ae">
+
+<img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/46266c26-99ce-4a79-9e5c-9558ea15f407">
+
+**Synthesis**
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog bad_mux.v`
++ `synth -top bad_mux`
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/a19eb270-87dd-40cc-95f8-3bd3cf02a396">
+
+<img width="302" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d15147f9-775d-44bb-93a5-d7249645d9bc">
+
+**GLS to Gate-Level Simulation**
+
++ `iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux_net.v tb_bad_mux.v`
++ `./a.out`
++ `gtkwave tb_bad_mux.vcd`
+
+<img width="878" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/29d0b4bd-2874-4809-bf2b-728a73cccc09">
+  
+<img width="501" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/9d51d787-22d3-4495-95cc-c87c0ef71d17">
+
+</details>
+
+## Labs on Synth-Sim Mismatch for Blocking Statement
+
+<details>
+<summary> blocking_caveat </summary>	
+
++ `gvim blocking_caveat.v`
+
+<img width="327" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/5827ea02-ec07-4164-9b9f-b064750ede9d">
+
+**Simualtion**
+
++ `iverilog blocking_caveat.v tb_blocking_caveat.v`
++ `./a.out`
++ `gtkwave tb_blocking_caveat.vcd`
+
+<img width="567" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/09e0265c-b794-4d3f-9e27-4403a6b9122a">
+
+<img width="501" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c3b18d2e-d407-45c4-9e97-ec59042ec2bd">
+
+**Synthesis**
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog blocking_caveat.v`
++ `synth -top blocking_caveat`
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/7f942ace-02b0-4421-8d20-5e7126cbb3df">
+
+<img width="302" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d660d89b-8a9a-43d3-9e78-ab1f7054a667">
+
+**GLS to Gate-Level Simulation**
+
++ `iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v blocking_caveat_net.v tb_blocking_caveat.v`
++ `./a.out`
++ `gtkwave tb_blocking_caveat.vcd`
+
+<img width="926" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c541ebb5-b42d-4629-b12a-734541df3071">
+
+<img width="503" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c78704db-de4c-4958-880f-0747f78090d9">
 
 </details>
