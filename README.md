@@ -127,7 +127,7 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 
 ## DAY 6
 **GLS, Blocking vs Non-Blocking and Synthesis-Simulation Mismatch**
-+ [GLS Synthesis-Simulation Mismatch and Blocking Non-blocking Statements](##gls-synthesis-simulation-mismatch-and-blocking-non-blocking-statements)
++ [GLS Synthesis-Simulation Mismatch and Blocking Non-Blocking Statements](##gls-synthesis-simulation-mismatch-and-blocking-non-blocking-statements)
   - GLS Concepts And Flow Using Iverilog
   - Synthesis Simulation Mismatch
   - Blocking And Non Blocking Statements In Verilog
@@ -1437,7 +1437,7 @@ It gives a report of what cells are used and the number of input and output sign
 
 <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/74fa07aa-5dc3-4f04-8fc1-babe67ded667">
 
-<img width="299" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/9a4f4ebd-370f-45b5-a1c1-cd95b8e1e556">
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/9a4f4ebd-370f-45b5-a1c1-cd95b8e1e556">
 
 **GLS to Gate-Level Simulation**
 
@@ -1478,7 +1478,7 @@ It gives a report of what cells are used and the number of input and output sign
 
 <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/a19eb270-87dd-40cc-95f8-3bd3cf02a396">
 
-<img width="302" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d15147f9-775d-44bb-93a5-d7249645d9bc">
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d15147f9-775d-44bb-93a5-d7249645d9bc">
 
 **GLS to Gate-Level Simulation**
 
@@ -1521,7 +1521,7 @@ It gives a report of what cells are used and the number of input and output sign
 
 <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/7f942ace-02b0-4421-8d20-5e7126cbb3df">
 
-<img width="302" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d660d89b-8a9a-43d3-9e78-ab1f7054a667">
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d660d89b-8a9a-43d3-9e78-ab1f7054a667">
 
 **GLS to Gate-Level Simulation**
 
