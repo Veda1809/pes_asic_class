@@ -594,52 +594,7 @@ this would generate object file `custom1to9.o`.
 
 + `gvim tb_good_mux.v -o good_mux.v`
 
-**good_mux.v**
-
-``` v
-module good_mux (input i0 , input i1 , input sel , output reg y);
-always @ (*)
-begin
-	if(sel)
-		y <= i1;
-	else 
-		y <= i0;
-end
-endmodule
-```
-**tb_good_mux.v**
-
-``` v
-timescale 1ns / 1ps
-module tb_good_mux;
-	// Inputs
-	reg i0,i1,sel;
-	// Outputs
-	wire y;
-
-        // Instantiate the Unit Under Test (UUT)
-	good_mux uut (
-		.sel(sel),
-		.i0(i0),
-		.i1(i1),
-		.y(y)
-	);
-
-	initial begin
-	$dumpfile("tb_good_mux.vcd");
-	$dumpvars(0,tb_good_mux);
-	// Initialize Inputs
-	sel = 0;
-	i0 = 0;
-	i1 = 0;
-	#300 $finish;
-	end
-
-always #75 sel = ~sel;
-always #10 i0 = ~i0;
-always #55 i1 = ~i1;
-endmodule
-```
+<img width="367" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/ef3c8e61-2e45-4087-9584-f84fd3584cd3">
 
 </details>
 
@@ -692,14 +647,14 @@ endmodule
   - In order to make a circuit faster, the clock frequency should be high.
   - For that, the time period of the clock should be as low as possible.
   
-<img width="269" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/bc2242db-49e8-4c19-a06e-8f8e82f55729">
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/bc2242db-49e8-4c19-a06e-8f8e82f55729">
 
 + In a sequential circuit, clock period depends on:
   - Clock to Q of flip-flop A.
   - Propagation delay of combinational circuit.
   - Setup time of flip-flop B.
 
-<img width="142" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/112de4cd-6e0c-46ec-ad94-0cb6540af7e1">
+<img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/112de4cd-6e0c-46ec-ad94-0cb6540af7e1">
 
 + **Why need fast and slow cells?**
   - To ensure that there are no HOLD issues at flip-flop B, we require slow cells.
@@ -1279,5 +1234,64 @@ It gives a report of what cells are used and the number of input and output sign
 
 <details>
 <summary> dff_const4 </summary>	
-	
+
++ `gvim dff_const4.v`
+
+<img width="311" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/bc5661c4-50c6-4ccf-8aab-a5ace3ccfa14">
+
+**Simulation**
+
++ `iverilog dff_const4.v tb_dff_const4.v`
++ `/a.out`
++ `gtkwave tb_dff_const4.vcd`
+
+<img width="530" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c51fb049-bb70-477a-8aa4-9951d1ea684c">
+
+<img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/1a9ee230-2ad6-4c92-8e37-0a753832180f">
+
+**Synthesis**
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog dff_const4.v`
++ `synth -top dff_const4`
++ `dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib `
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="193" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/a152102c-a880-499d-98e6-f2d26201ea85">
+
+<img width="306" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/4d4d33fc-11ec-4cb5-867d-2f34d892255a">
+
+</details>
+
+<details>
+<summary> dff_const5 </summary>	
+
++ `gvim dff_const5.v`
+
+<img width="251" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/af7acfca-6fb0-4b62-bb1e-d32746d0c07e">
+
+**Simulation**
+
++ `iverilog dff_const4.v tb_dff_const4.v`
++ `/a.out`
++ `gtkwave tb_dff_const4.vcd`
+
+<img width="529" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/e27a9ee5-6332-4147-8bf9-c246ca7d7996">
+
+<img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/7eb3b371-189e-483c-80d9-37d38c062cd2">
+
+**Synthesis**
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog dff_const4.v`
++ `synth -top dff_const4`
++ `dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib `
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+ <img width="205" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/e2719af7-b746-4830-b04f-87df97143f86">
+
+<img width="923" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/8d95c49d-9fd9-4d76-bba1-b893c6f163fc">
+
 </details>
