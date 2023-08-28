@@ -121,7 +121,7 @@ https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
 + [Various Flop Coding Styles and Optimization](#various-flop-coding-styles-and-optimization)
   - Why Flops and Flop Coding Styles
   - Lab Flop Synthesis Simulations
-  - Interesting optimisations
+  - Interesting Optimisations
 
 ## DAY 5
 **Combinational and Sequential Optmizations**
@@ -1177,4 +1177,107 @@ It gives a report of what cells are used and the number of input and output sign
 
 <img width="400" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/1344d22d-51f5-439e-bc34-96b2a742474e">
 
+</details>
+
+## Sequential Logic Optimisations
+
+<details>
+<summary> dff_const1 </summary>	
+
++ `gvim dff_const1.v`
+
+<img width="331" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/abec2938-5f2c-4cd5-b369-103c1b09f098">
+
+**Simulation**
+
++ `iverilog dff_const1.v tb_dff_const1.v`
++ `/a.out`
++ `gtkwave tb_dff_const1.vcd`
+
+<img width="572" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/551d623c-c25c-4c42-882f-7455f451e752">
+
+<img width="503" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/51301173-fdbd-476c-842e-2d08078f020d">
+
+**Synthesis**
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog dff_const1.v`
++ `synth -top dff_const1`
++ `dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib `
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="194" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c542c8b4-3624-4a22-92c5-35a4b1458c35">
+
+<img width="925" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/fa1d8b2f-431e-4836-8a75-8c2bd3ce326e">
+
+</details>
+
+<details>
+<summary> dff_const2 </summary>	
+
++ `gvim dff_const2.v`
+
+<img width="355" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/e0e6e4da-0429-49db-b687-d99ab365ed17">
+
+**Simulation**
+
++  `iverilog dff_const2.v tb_dff_const2.v`
++ `/a.out`
++ `gtkwave tb_dff_const2.vcd`
+
+<img width="535" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d50ca5c4-3cf0-45ce-a987-07c10a9bc737">
+
+ <img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/a90d628f-dd7d-4ae6-8b4d-072b6a9960b9">
+
+ **Synthesis**
+ 
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog dff_const2.v`
++ `synth -top dff_const2`
++ `dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib `
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+ <img width="206" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d4859923-36a2-4cf2-bcef-6befaf718913">
+
+<img width="305" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/8e3503dd-d315-426f-9a3e-bd487014600a">
+
+</details>
+
+<details>
+<summary> dff_const3 </summary>
+
++ `gvim dff_const3.v`
+
+ <img width="272" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3ce28559-0063-4ef1-9d7e-a3af839dd7e3">
+
+**Simulation**
+
++ `iverilog dff_const3.v tb_dff_const3.v`
++ `/a.out`
++ `gtkwave tb_dff_const3.vcd`
+
+<img width="519" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/9f8b58c1-3f03-4bad-a238-062c751f5401">
+
+<img width="502" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/aed6c933-5c06-4687-ba9e-9c782626c030">
+
+**Synthesis**
+
++ `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `read_verilog dff_const3.v`
++ `synth -top dff_const3`
++ `dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib `
++ `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
++ `show`
+
+<img width="197" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/7cc2308b-b988-4ba9-965f-06abf2472e2b">
+
+<img width="922" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/bdea6f33-d357-47f4-a9fd-cc655dcce869">
+
+</details>
+
+<details>
+<summary> dff_const4 </summary>	
+	
 </details>
