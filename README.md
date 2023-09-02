@@ -1509,7 +1509,7 @@ It gives a report of what cells are used and the number of input and output sign
 
 <img width="567" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/09e0265c-b794-4d3f-9e27-4403a6b9122a">
 
-<img width="501" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c3b18d2e-d407-45c4-9e97-ec59042ec2bd">
+<img width="500" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/fe7f3ec3-eec1-40e7-b20d-47f6242c3619">
 
 **Synthesis**
 
@@ -1531,6 +1531,6 @@ It gives a report of what cells are used and the number of input and output sign
 
 <img width="926" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c541ebb5-b42d-4629-b12a-734541df3071">
 
-<img width="503" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/c78704db-de4c-4958-880f-0747f78090d9">
+<img width="502" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/d265a9a3-db89-46ed-b351-3e6ac9004cd9">
 
 </details>
