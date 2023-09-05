@@ -1443,7 +1443,7 @@ It gives a report of what cells are used and the number of input and output sign
 
 + `iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v`
 + `./a.out`
-+ `gtkwave tb_bad_mux.vcd`
++ `gtkwave tb_ternary_operator_mux.vcd`
 
 <img width="928" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/97f59e19-d561-4c1e-b8b5-46fb1eb21595">
 
